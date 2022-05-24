@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "vixel.js", "vixel.js.njsproj", "{E535FB26-327F-456E-BDA2-D376B073C57F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E535FB26-327F-456E-BDA2-D376B073C57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E535FB26-327F-456E-BDA2-D376B073C57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E535FB26-327F-456E-BDA2-D376B073C57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E535FB26-327F-456E-BDA2-D376B073C57F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7C628E6-D14D-4969-8B04-20B53702CEB2}
+	EndGlobalSection
+EndGlobal
