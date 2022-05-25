@@ -1,0 +1,23 @@
+# Node
+.DS_Store
+node_modules
+/dist
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Log files
+logs
+*.log
+npm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
