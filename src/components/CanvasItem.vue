@@ -17,6 +17,9 @@ export default {
   name: "CanvasItem",
 
   mounted() {
+    //  Value to calculate the offset caused by other elements such as nav, fixes distance between cursor and line drawn
+    this.offset = document.getElementById("nav").clientHeight;
+
     this.canvas = document.getElementById("canvas");
     this.context = this.canvas.getContext("2d");
     this.canvas.height = window.innerHeight;
@@ -27,6 +30,7 @@ export default {
       drawing: false,
       canvas: null,
       context: null,
+      offset: null,
     };
   },
   methods: {
@@ -41,10 +45,11 @@ export default {
     draw(event) {
       if (!this.drawing) return;
 
-      this.context.lineTo(event.pageX, event.pageY);
+      this.context.lineTo(event.pageX, event.pageY - this.offset);
       this.context.stroke();
       this.context.beginPath();
-      this.context.moveTo(event.pageX, event.pageY);
+      this.context.moveTo(event.pageX, event.pageY - this.offset);
+      console.log(this.offset);
     },
   },
 };
