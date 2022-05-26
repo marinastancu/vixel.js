@@ -5,7 +5,8 @@
       @mouseup="finishedDrawing"
       @mousemove="draw"
       id="canvas"
-      image-rendering="pixelated"
+      width="32"
+      height="32"
     >
       Your browser doesn't support this functionality!
     </canvas>
@@ -17,20 +18,14 @@ export default {
   name: "CanvasItem",
 
   mounted() {
-    //  Value to calculate the offset caused by other elements such as nav, fixes distance between cursor and line drawn
-    this.offset = document.getElementById("nav").clientHeight;
-
     this.canvas = document.getElementById("canvas");
     this.context = this.canvas.getContext("2d");
-    this.canvas.height = window.innerHeight;
-    this.canvas.width = window.innerWidth;
   },
   data() {
     return {
       drawing: false,
       canvas: null,
       context: null,
-      offset: null,
     };
   },
   methods: {
@@ -45,11 +40,26 @@ export default {
     draw(event) {
       if (!this.drawing) return;
 
-      this.context.lineTo(event.pageX, event.pageY - this.offset);
+      var position = this.getMousePosition(this.canvas, event);
+      var positionX = position.x;
+      var positionY = position.y;
+
+      this.context.lineTo(positionX, positionY);
       this.context.stroke();
       this.context.beginPath();
-      this.context.moveTo(event.pageX, event.pageY - this.offset);
-      console.log(this.offset);
+      this.context.moveTo(positionX, positionY);
+    },
+
+    getMousePosition: function (canvas, e) {
+      var rectangle = canvas.getBoundingClientRect();
+      return {
+        x:
+          ((e.clientX - rectangle.left) / (rectangle.right - rectangle.left)) *
+          canvas.width,
+        y:
+          ((e.clientY - rectangle.top) / (rectangle.bottom - rectangle.top)) *
+          canvas.height,
+      };
     },
   },
 };
@@ -59,5 +69,11 @@ export default {
 <style scoped>
 #canvas {
   border: 3px solid black;
+  width: 50%;
+  height: 50%;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 </style>
